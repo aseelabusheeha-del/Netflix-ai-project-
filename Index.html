@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Netflix Uses AI Recommendations</title>
+<style>
+  :root{
+    --navy:#122a63;
+    --blue:#2457c5;
+    --light:#f4f7ff;
+    --gold:#e7a83b;
+    --text:#172033;
+    --muted:#5d6880;
+    --white:#ffffff;
+    --line:#dce4f5;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--text);
+    background:linear-gradient(180deg,#eef3ff 0%,#ffffff 45%);
+    line-height:1.6;
+  }
+  .wrap{max-width:1100px;margin:auto;padding:0 22px}
+  header{
+    background:linear-gradient(135deg,var(--navy),#214b9b);
+    color:white;
+    padding:70px 0 55px;
+    position:relative;
+    overflow:hidden;
+  }
+  header:after{
+    content:"AI";
+    position:absolute;
+    right:-10px;bottom:-75px;
+    font-size:240px;font-weight:900;
+    opacity:.06;
+  }
+  .tag{
+    display:inline-block;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.28);
+    padding:7px 13px;border-radius:999px;
+    font-size:14px;font-weight:700;letter-spacing:.4px;
+  }
+  h1{font-size:clamp(38px,6vw,68px);line-height:1.05;margin:18px 0 14px;max-width:850px}
+  .lead{font-size:20px;max-width:800px;color:#e7eeff}
+  .student{margin-top:24px;font-size:14px;color:#cbd8f8}
+  section{padding:55px 0}
+  .section-title{font-size:34px;color:var(--navy);margin:0 0 10px}
+  .section-intro{color:var(--muted);max-width:780px;margin-top:0}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:25px}
+  .card{
+    background:white;border:1px solid var(--line);border-radius:18px;
+    padding:24px;box-shadow:0 8px 28px rgba(18,42,99,.07)
+  }
+  .card h3{margin-top:0;color:var(--navy);font-size:20px}
+  .icon{
+    width:44px;height:44px;border-radius:12px;background:var(--light);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--blue);font-weight:900;margin-bottom:15px
+  }
+  .flow{
+    display:flex;align-items:stretch;justify-content:center;gap:10px;
+    flex-wrap:wrap;margin:30px 0 12px
+  }
+  .step{
+    flex:1 1 145px;max-width:190px;background:white;border:2px solid var(--line);
+    border-radius:16px;padding:18px;text-align:center;position:relative
+  }
+  .step strong{display:block;color:var(--navy);font-size:17px}
+  .step span{display:block;color:var(--muted);font-size:13px;margin-top:5px}
+  .arrow{align-self:center;color:var(--blue);font-size:28px;font-weight:bold}
+  .callout{
+    margin-top:25px;background:var(--light);border-left:5px solid var(--gold);
+    padding:20px 22px;border-radius:12px
+  }
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  ul{padding-left:21px}
+  li{margin:8px 0}
+  .improvement{
+    background:linear-gradient(135deg,#fff8e8,#ffffff);
+    border:1px solid #f0dfb7;border-radius:20px;padding:28px
+  }
+  .slider{
+    display:flex;align-items:center;gap:12px;margin:18px 0;
+    font-weight:700;color:var(--navy)
+  }
+  .bar{height:10px;flex:1;border-radius:99px;background:linear-gradient(90deg,#dce7ff,#2457c5)}
+  .sources a{color:var(--blue);font-weight:700;text-decoration:none}
+  .sources a:hover{text-decoration:underline}
+  footer{background:var(--navy);color:#dce6ff;padding:35px 0;margin-top:20px}
+  footer a{color:white}
+  .small{font-size:13px;color:var(--muted)}
+  @media(max-width:760px){
+    .grid,.two{grid-template-columns:1fr}
+    .arrow{display:none}
+    header{padding-top:48px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="tag">GRADE 10 • AI PROJECT</span>
+    <h1>How Netflix Uses AI to Recommend What You Watch</h1>
+    <p class="lead">
+      A one-page map of an everyday AI-powered system: the data it receives,
+      how algorithms process that data, how recommendations are organized,
+      and how the user's actions create new feedback.
+    </p>
+    <p class="student">Created for Grade 10 — AI Conceptual Understanding</p>
+  </div>
+</header>
+
+<main>
+<section>
+  <div class="wrap">
+    <h2 class="section-title">The Big Idea</h2>
+    <p class="section-intro">
+      Netflix uses a personalized recommendation system to estimate which
+      shows, movies, and games a member may enjoy. Netflix says the system
+      uses signals from the member's interactions, information about titles,
+      and patterns from members with similar tastes.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="icon">01</div>
+        <h3>Data goes in</h3>
+        <p>Viewing history, ratings, genres, title information, language preferences, device information, time of day, and how long a title was watched can provide signals.</p>
+      </div>
+      <div class="card">
+        <div class="icon">02</div>
+        <h3>Algorithms process it</h3>
+        <p>Recommendation algorithms use these signals to estimate the likelihood that a member will enjoy different titles.</p>
+      </div>
+      <div class="card">
+        <div class="icon">03</div>
+        <h3>A personalized result comes out</h3>
+        <p>The system chooses and ranks titles and can personalize which rows appear on the homepage and the order of titles within them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#f7f9ff">
+  <div class="wrap">
+    <h2 class="section-title">System Map</h2>
+    <p class="section-intro">The components connect in a continuous feedback loop.</p>
+
+    <div class="flow">
+      <div class="step"><strong>USER DATA</strong><span>Viewing, ratings, preferences</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><strong>AI / ALGORITHMS</strong><span>Process signals and make predictions</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><strong>RANKING</strong><span>Select and order titles</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><strong>OUTPUT</strong><span>Personalized homepage</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><strong>USER</strong><span>Chooses what to watch</span></div>
+    </div>
+
+    <div class="callout">
+      <strong>Feedback loop:</strong> The user's new actions become additional signals.
+      Netflix says it uses feedback such as titles started, titles completed, and ratings
+      to continually update its algorithms.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="section-title">What Happens at Each Stage?</h2>
+    <div class="two">
+      <div class="card">
+        <h3>1. Inputs: What data is collected?</h3>
+        <ul>
+          <li>Viewing history and interactions with Netflix</li>
+          <li>Ratings such as thumbs up or thumbs down</li>
+          <li>Genres and categories of titles</li>
+          <li>Title information such as actors and release year</li>
+          <li>Preferred languages</li>
+          <li>Device and time-of-day signals</li>
+          <li>How long the member watched a title</li>
+          <li>Patterns from members with similar tastes</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>2. Processing: What does the AI do?</h3>
+        <p>
+          The recommendation system processes these signals with algorithms.
+          It estimates which titles a member may enjoy and uses the results to
+          personalize the homepage.
+        </p>
+        <p>
+          Netflix describes several layers of personalization: the choice of
+          row, which titles appear in a row, and the order of those titles.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>3. Tools & steps: How is the output organized?</h3>
+        <ol>
+          <li>Process available signals.</li>
+          <li>Estimate likely interest in titles.</li>
+          <li>Select relevant rows and titles.</li>
+          <li>Rank the titles in each row.</li>
+          <li>Display the personalized homepage.</li>
+          <li>Collect new interaction signals.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h3>4. Who uses the result?</h3>
+        <p>
+          The Netflix member uses the personalized homepage to discover something
+          to watch. The system then receives new feedback from that interaction,
+          allowing future recommendations to change.
+        </p>
+        <p><strong>Result:</strong> a personalized set of entertainment choices.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#f7f9ff">
+  <div class="wrap">
+    <h2 class="section-title">Example of the Feedback Loop</h2>
+    <div class="card">
+      <p><strong>Imagine:</strong> A member often watches science-fiction shows and gives several of them positive ratings.</p>
+      <p><strong>→ Data:</strong> Those interactions become signals.</p>
+      <p><strong>→ Processing:</strong> Recommendation algorithms use the signals with other available information.</p>
+      <p><strong>→ Output:</strong> The homepage can show and rank science-fiction titles or other titles predicted to be interesting.</p>
+      <p><strong>→ New feedback:</strong> What the member watches next gives the system more information.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="section-title">Proposed Improvement</h2>
+    <div class="improvement">
+      <h3>Give users a “More Variety” control</h3>
+      <p>
+        A possible improvement would be to let users choose how much variety they want
+        in their recommendations. This would allow a person to move between highly
+        personalized suggestions and recommendations that are farther outside their
+        usual viewing patterns.
+      </p>
+      <div class="slider">
+        <span>More Like My History</span>
+        <div class="bar"></div>
+        <span>More Variety</span>
+      </div>
+      <p>
+        <strong>Predicted effect:</strong> More variety could help users discover
+        different types of content instead of repeatedly receiving very similar
+        recommendations.
+      </p>
+      <p>
+        <strong>Trade-off:</strong> Increasing variety may also produce recommendations
+        that are less closely matched to a user's previous interests. The system would
+        therefore need to balance personalization and discovery.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section style="background:#f7f9ff">
+  <div class="wrap">
+    <h2 class="section-title">Why This Is an AI System</h2>
+    <div class="card">
+      <p>
+        This system demonstrates how <strong>data, algorithms, tools, outputs, and users
+        interact</strong>. The system does not simply store a list of favorite shows.
+        It processes signals and makes predictions about what a member may want to watch.
+        The user's future actions then provide new feedback, creating an ongoing cycle.
+      </p>
+      <p>
+        Netflix also publishes research on personalization, recommendations, machine
+        learning, and search, showing that these areas are active parts of its technology
+        research.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap sources">
+    <h2 class="section-title">Sources</h2>
+    <div class="card">
+      <p><a href="https://help.netflix.com/en/node/100639" target="_blank" rel="noopener">Netflix Help Center — How Netflix's Recommendations System Works</a></p>
+      <p><a href="https://help.netflix.com/en/node/9898" target="_blank" rel="noopener">Netflix Help Center — How to rate TV shows and movies</a></p>
+      <p><a href="https://research.netflix.com/research-area/recommendations" target="_blank" rel="noopener">Netflix Research — Recommendations</a></p>
+      <p class="small">Information checked against Netflix's official sources in September 2026.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>Grade 10 AI Project</strong>
+    <p>How Netflix Uses AI to Recommend What You Watch</p>
+  </div>
+</footer>
+
+</body>
+</html>
